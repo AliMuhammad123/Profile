@@ -231,6 +231,37 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 .foot-links a:hover{color:var(--jade)}
 .foot small{color:var(--muted);font-size:13px}
 
+
+/* ---------- graphics & icons ---------- */
+.ic{width:48px;height:48px;border-radius:14px;background:rgba(61,220,151,.1);border:1px solid var(--jade-dim);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:transform .25s}
+.ic svg{width:23px;height:23px;stroke:var(--jade);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svc:hover .ic,.th:hover .ic,.step:hover .ic{transform:rotate(-8deg) scale(1.1)}
+.step .ic,.th .ic{width:42px;height:42px;border-radius:12px;margin-bottom:14px}
+.step .ic svg,.th .ic svg{width:20px;height:20px}
+
+/* before -> after visual */
+.ba{display:grid;grid-template-columns:1fr 60px 1fr;gap:18px;align-items:center;margin-top:56px}
+@media(max-width:760px){.ba{grid-template-columns:1fr;gap:14px}.ba-arrow{transform:rotate(90deg);justify-self:center}}
+.ba-panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.ba-panel h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+.ba-before h4{color:#e07a5f}
+.ba-after h4{color:var(--jade)}
+.mess{display:grid;gap:8px}
+.mess i{display:block;height:10px;border-radius:4px;background:#243033}
+.mess i:nth-child(1){width:92%}.mess i:nth-child(2){width:64%;background:#2d2426}
+.mess i:nth-child(3){width:81%}.mess i:nth-child(4){width:47%;background:#2d2426}
+.mess i:nth-child(5){width:73%}
+.mess .x{font-family:var(--font-mono);font-size:10.5px;color:#e07a5f;margin-top:6px}
+.tidy{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tidy .cellk{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px}
+.tidy .cellk small{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block}
+.tidy .cellk b{font-family:var(--font-display);font-size:17px;color:var(--jade)}
+.tidy .full{grid-column:1/-1;display:flex;align-items:end;gap:5px;height:44px;padding:8px 10px}
+.tidy .full i{flex:1;background:var(--jade-dim);border-radius:3px 3px 0 0}
+.tidy .full i.hi{background:var(--jade)}
+.ba-arrow{text-align:center;color:var(--jade);font-size:26px}
+.ba-arrow svg{width:38px;height:38px;stroke:var(--jade);fill:none;stroke-width:2;stroke-linecap:round}
+
 /* reveal on scroll */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
 .reveal.in{opacity:1;transform:none}
@@ -312,6 +343,24 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       <p>For years, running a business meant drowning in it — <strong>spreadsheets everywhere, stock counted by hand, reports built at midnight.</strong></p>
       <p>AI changed the math. The tools that once cost a fortune and a full IT team can now be built fast, tailored exactly to how <strong>your</strong> business works. <span class="j">The businesses that adopt systems first will out-run the ones that don't.</span></p>
       <p>That's what I do: I take the part of your business that eats your time — and <strong>turn it into software that runs itself.</strong></p>
+      <div class="ba" aria-hidden="true">
+        <div class="ba-panel ba-before">
+          <h4>Before — manual chaos</h4>
+          <div class="mess">
+            <i></i><i></i><i></i><i></i><i></i>
+            <span class="x">✕ 14 spreadsheets · 3 versions · midnight reports</span>
+          </div>
+        </div>
+        <div class="ba-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="ba-panel ba-after">
+          <h4>After — one system</h4>
+          <div class="tidy">
+            <div class="cellk"><small>Sales today</small><b>▲ 12%</b></div>
+            <div class="cellk"><small>Report</small><b>Auto · 8AM</b></div>
+            <div class="cellk full"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:60%"></i><i class="hi" style="height:100%"></i></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -325,10 +374,10 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       <p>Every project runs the same four-step loop — simple, transparent, and proven across three shipped products.</p>
     </div>
     <div class="steps reveal">
-      <div class="step"><b>01</b><h3>Understand the business</h3><p>We map your daily operations and find exactly where time and money leak. No jargon — your real workflow.</p></div>
-      <div class="step"><b>02</b><h3>Build the system</h3><p>A dashboard or app built around how you actually work — tested against your real files and numbers.</p></div>
-      <div class="step"><b>03</b><h3>Automate the busywork</h3><p>AI handles the repetitive part: reports, alerts, reordering signals, customer replies.</p></div>
-      <div class="step"><b>04</b><h3>Refine as you grow</h3><p>Your business changes; the system keeps up. Clear logic only — if it can't be explained, it doesn't ship.</p></div>
+      <div class="step"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><b>01</b><h3>Understand the business</h3><p>We map your daily operations and find exactly where time and money leak. No jargon — your real workflow.</p></div>
+      <div class="step"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18v3h3l5.7-5.7a4.5 4.5 0 0 0 6-6L15 12l-3-3z"/></svg></div><b>02</b><h3>Build the system</h3><p>A dashboard or app built around how you actually work — tested against your real files and numbers.</p></div>
+      <div class="step"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><b>03</b><h3>Automate the busywork</h3><p>AI handles the repetitive part: reports, alerts, reordering signals, customer replies.</p></div>
+      <div class="step"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 3v6h-6"/></svg></div><b>04</b><h3>Refine as you grow</h3><p>Your business changes; the system keeps up. Clear logic only — if it can't be explained, it doesn't ship.</p></div>
     </div>
     <p class="loop-note">↻ back to 01 — <em>the loop compounds</em></p>
   </div>
@@ -435,9 +484,9 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       <h2>AI can run your operations. Most businesses just haven't asked it to.</h2>
     </div>
     <div class="thesis-grid">
-      <div class="th reveal"><b>01</b><h3>Manual work doesn't scale</h3><p>Every hour spent copying numbers between spreadsheets is an hour not spent on customers. Growth makes it worse, not better.</p></div>
-      <div class="th reveal"><b>02</b><h3>Your data already has the answers</h3><p>Which products to reorder, which ads to cut, which days need more staff — it's all in your files. A system surfaces it automatically.</p></div>
-      <div class="th reveal"><b>03</b><h3>Automation compounds</h3><p>One automated report saves an hour a week. Ten automations give you back a working day. The earlier you start, the more it stacks.</p></div>
+      <div class="th reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 20V10M12 20V4M18 20v-6"/><path d="M2 2l20 20" stroke="#e07a5f"/></svg></div><b>01</b><h3>Manual work doesn't scale</h3><p>Every hour spent copying numbers between spreadsheets is an hour not spent on customers. Growth makes it worse, not better.</p></div>
+      <div class="th reveal"><div class="ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div><b>02</b><h3>Your data already has the answers</h3><p>Which products to reorder, which ads to cut, which days need more staff — it's all in your files. A system surfaces it automatically.</p></div>
+      <div class="th reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><b>03</b><h3>Automation compounds</h3><p>One automated report saves an hour a week. Ten automations give you back a working day. The earlier you start, the more it stacks.</p></div>
     </div>
   </div>
 </section>
@@ -451,13 +500,13 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
       <p>Whether you run an online store, a retail shop or a restaurant — if it's slow, manual or messy, it can be automated.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc reveal"><span class="k">Automate</span><h3>AI Automations</h3><p>Put your repetitive work on autopilot with AI that handles it for you.</p>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div><span class="k">Automate</span><h3>AI Automations</h3><p>Put your repetitive work on autopilot with AI that handles it for you.</p>
         <ul><li>Automated daily reports to WhatsApp or email</li><li>AI assistants that answer customer questions</li><li>Smart alerts for stock, sales dips and anomalies</li></ul></div>
-      <div class="svc reveal"><span class="k">See clearly</span><h3>Business Analytics Dashboards</h3><p>Your whole business in one screen — sales, stock, ads and returns.</p>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M8 16v-5M13 16V8M18 16v-3"/></svg></div><span class="k">See clearly</span><h3>Business Analytics Dashboards</h3><p>Your whole business in one screen — sales, stock, ads and returns.</p>
         <ul><li>Marketplace &amp; e-commerce sales analytics</li><li>Multi-country and multi-warehouse views</li><li>Works from the files you already export</li></ul></div>
-      <div class="svc reveal"><span class="k">Run smoother</span><h3>Custom Management Apps</h3><p>Purpose-built systems for retail stores, restaurants and organizations.</p>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div><span class="k">Run smoother</span><h3>Custom Management Apps</h3><p>Purpose-built systems for retail stores, restaurants and organizations.</p>
         <ul><li>Inventory, orders, staff and daily operations</li><li>Role-based access and secure records</li><li>Designed around how your business actually works</li></ul></div>
-      <div class="svc reveal"><span class="k">Go digital</span><h3>Web Apps &amp; Digital Presence</h3><p>Fast, modern web apps and websites — hosted, shareable, client-ready.</p>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><span class="k">Go digital</span><h3>Web Apps &amp; Digital Presence</h3><p>Fast, modern web apps and websites — hosted, shareable, client-ready.</p>
         <ul><li>Business websites and portfolios</li><li>Hosted tools your team can use anywhere</li><li>Custom domains and deployment handled for you</li></ul></div>
     </div>
   </div>
