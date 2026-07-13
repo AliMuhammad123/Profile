@@ -345,6 +345,11 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 .demo-lock p b{color:var(--text)}
 .demo-lock .btn{padding:10px 20px;font-size:14px}
 
+
+/* email-copied toast */
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);background:var(--jade);color:#04140d;font-weight:600;font-size:14px;padding:12px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:100;box-shadow:0 12px 34px rgba(61,220,151,.35)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 /* reveal on scroll */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
 .reveal.in{opacity:1;transform:none}
@@ -681,7 +686,23 @@ const waURL = "https://wa.me/" + SITE_CONFIG.whatsapp + "?text=" + encodeURIComp
 document.querySelectorAll("[data-wa]").forEach(a=>a.href=waURL);
 document.querySelectorAll("[data-li]").forEach(a=>a.href=SITE_CONFIG.linkedin);
 const em=document.querySelector("[data-email]");
-if(em && SITE_CONFIG.email){em.href="mailto:"+SITE_CONFIG.email;em.style.display="inline-flex";}
+if(em && SITE_CONFIG.email){
+  em.href="mailto:"+SITE_CONFIG.email;
+  em.style.display="inline-flex";
+  em.addEventListener("click",()=>{
+    // also copy the address, so the click always gives feedback
+    const show=()=>{ 
+      let t=document.getElementById("toast");
+      if(!t){t=document.createElement("div");t.id="toast";t.className="toast";document.body.appendChild(t);}
+      t.textContent="📋 " + SITE_CONFIG.email + " copied!";
+      t.classList.add("show");
+      setTimeout(()=>t.classList.remove("show"),2600);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(SITE_CONFIG.email).then(show).catch(show);
+    } else { show(); }
+  });
+}
 
 // ---- animated counters (fire when visible) ----
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
