@@ -8,7 +8,7 @@
 <meta name="keywords" content="AI automation services, Amazon seller analytics dashboard, e-commerce analytics, retail store management app, restaurant management software, Odoo developer, Power BI dashboards, custom business apps, remote developer, USA, UK, Europe, Pakistan">
 <link rel="canonical" href="https://alikhakwani.com/">
 <meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#090c0e">
 
@@ -31,14 +31,18 @@ const SITE_CONFIG = {
    The section stays hidden until this list has at least one entry.
    Copy the block between { } for each new review.
    ============================================================ */
+/* SUPABASE — paste your two values here (Settings -> API in Supabase) */
+const SUPABASE_URL = "";   // e.g. "https://abcdxyz.supabase.co"
+const SUPABASE_KEY = "";   // the anon / publishable key
+
 const TESTIMONIALS = [
-   {
-     name: "Sania Saeed",
-     role: "Brand Manager",                       // their role
-     business: "Ecommerce",     // their business
-     stars: 5,                            // 1 to 5
-     text: "Ali has been incredibly helpful in building customised tools that have saved me a lot of time. From creating a tool that simplifies sorting through complex compliance documents to another that provides valuable Amazon Ads insights, his work has been genuinely impactful. He's focused on building solutions that address real business problems, making my day to day work much more efficient. Overall, it's been a great experience working with him."
-   },
+  // {
+  //   name: "Client Name",
+  //   role: "Owner",                       // their role
+  //   business: "Business Name, City",     // their business
+  //   stars: 5,                            // 1 to 5
+  //   text: "Write the client's review here in their own words."
+  // },
 ];
 </script>
 
@@ -335,6 +339,27 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 .t-invite{text-align:center;margin-top:26px}
 .t-invite p{color:var(--muted);font-size:14px;margin-bottom:14px}
 
+.rv-field{margin-bottom:14px}
+.rv-field label{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.rv-field input,.rv-field select,.rv-field textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:14.5px;padding:11px 13px;outline:none;transition:border-color .15s}
+.rv-field input:focus,.rv-field select:focus,.rv-field textarea:focus{border-color:var(--jade)}
+.rv-field textarea{resize:vertical}
+
+/* ---------- compact 3-column projects ---------- */
+.proj-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.proj-grid{grid-template-columns:1fr}}
+.proj,.proj.p-phone{display:flex;flex-direction:column;gap:14px;padding:20px;grid-template-columns:none}
+.proj > div:last-child{order:-1}
+.proj h3{font-size:19px;margin:8px 0 8px}
+.proj p{font-size:13.5px;margin-bottom:12px}
+.proj .chip{font-size:11px;padding:4px 10px}
+.shot img,.shot video{height:170px;object-fit:cover;object-position:top}
+.shot-phone{max-width:100%;padding:0;border:none;background:transparent;border-radius:14px}
+.shot-phone .notch{display:none}
+.shot-phone .screen{max-height:none;border-radius:14px;border:1px solid var(--line)}
+.shot-phone .screen img{height:202px;object-fit:cover;object-position:top}
+.shot-cap{margin-top:8px;font-size:9px}
+
 /* email-copied toast */
 .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);background:var(--jade);color:#04140d;font-weight:600;font-size:14px;padding:12px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:100;box-shadow:0 12px 34px rgba(61,220,151,.35)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -386,10 +411,38 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"What kind of businesses do you work with?","acceptedAnswer":{"@type":"Answer","text":"Mainly e-commerce sellers (Amazon, eBay, Shopify), retail stores and restaurants. Remote work with clients in the USA, UK, Europe and Pakistan."}},
-    {"@type":"Question","name":"How much does a custom dashboard or app cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on scope. A focused analytics dashboard is lighter than a full management system. You get a clear, fixed quote before any work starts, and the first conversation is free."}},
-    {"@type":"Question","name":"How long does a project take?","acceptedAnswer":{"@type":"Answer","text":"A focused dashboard typically takes days; a complete management app with roles and reports takes a few weeks, with working versions shown along the way."}},
-    {"@type":"Question","name":"Do you work remotely with clients in the USA and Europe?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully remote. Karachi working hours overlap European business hours completely and US East Coast mornings, so communication stays same-day."}}
+    {
+      "@type": "Question",
+      "name": "What kind of businesses do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "E-commerce sellers (Amazon, eBay, Shopify), retail stores, restaurants — and any business owner who needs a digital or AI solution: AI automations, business analytics dashboards, custom management apps and web apps. Remote work with clients in the USA, UK, Europe and Pakistan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a custom dashboard or app cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing depends on scope: an AI automation or analytics dashboard costs less than a full retail store management system or restaurant management app. Every project gets a clear fixed-price quote before work starts, and the first consultation is free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a project take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A focused analytics dashboard (Amazon sales dashboard, e-commerce report, Power BI dashboard) typically takes days; a complete retail or restaurant management system with user roles takes a few weeks, with working versions shown along the way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work remotely with clients in the USA and Europe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — remote AI automation services and custom app development for businesses in the USA, UK, Europe and Pakistan. Karachi working hours overlap European business hours completely and US East Coast mornings, and everything is delivered online."
+      }
+    }
   ]
 }
 </script>
@@ -461,8 +514,8 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">The work</p>
-      <h2>Real products, built for real operations.</h2>
-      <p>Working tools, not mockups — watch them in action.</p>
+      <h2>My Projects</h2>
+      <p>Real working apps I built — see them in action.</p>
     </div>
     <div class="proj-grid">
 
@@ -470,7 +523,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <div>
           <span class="tag">E-commerce · Analytics</span>
           <h3>Analytics App for E-commerce</h3>
-          <p>A complete sales intelligence dashboard for online sellers. Upload your marketplace reports and instantly see sales trends, inventory health, advertising performance and returns — across multiple countries, in one view.</p>
+          <p>Upload your marketplace reports and instantly see sales, inventory, ads and returns — all in one screen.</p>
           <div class="chips"><span class="chip">Multi-country sales</span><span class="chip">Inventory tracking</span><span class="chip">Ads performance</span><span class="chip">Returns analysis</span></div>
         </div>
         <div>
@@ -486,7 +539,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <div>
           <span class="tag">Retail · Operations</span>
           <h3>Retail Store Management App</h3>
-          <p>Everything a store needs to run smoothly: products, stock levels, sales records and daily performance — replacing paper registers and scattered files with one clean, reliable system.</p>
+          <p>Stock, sales and daily performance in one simple system — no more paper registers or scattered Excel files.</p>
           <div class="chips"><span class="chip">Stock control</span><span class="chip">Sales register</span><span class="chip">Low-stock alerts</span><span class="chip">Daily summaries</span></div>
         </div>
         <div>
@@ -499,7 +552,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
         <div>
           <span class="tag">Hospitality · Management</span>
           <h3>Restaurant Management App</h3>
-          <p>Built for the pace of a busy kitchen: orders, menu, tables and daily takings tracked in real time, so owners always know exactly how the day is going — without standing over the till.</p>
+          <p>Orders, menu, tables and daily takings tracked in real time — the whole restaurant on one screen.</p>
           <div class="chips"><span class="chip">Order tracking</span><span class="chip">Menu management</span><span class="chip">Table overview</span><span class="chip">Daily reports</span></div>
         </div>
         <div>
@@ -563,7 +616,18 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
     <div class="t-grid" id="tGrid"></div>
     <div class="t-invite reveal">
       <p>Worked with me? I'd love your honest feedback.</p>
-      <a class="btn btn-ghost" data-review href="#">⭐ Share your review</a>
+      <button class="btn btn-ghost" id="rvToggle" type="button">⭐ Share your review</button>
+      <div id="rvForm" style="display:none;max-width:520px;margin:22px auto 0;text-align:left">
+        <div class="rv-field"><label>Your name *</label><input id="rvName" maxlength="80" placeholder="e.g. Ahmed Raza"></div>
+        <div class="rv-field"><label>Business (optional)</label><input id="rvBiz" maxlength="120" placeholder="e.g. Raza Traders, Karachi"></div>
+        <div class="rv-field"><label>Rating</label>
+          <select id="rvStars"><option value="5">★★★★★ — Excellent</option><option value="4">★★★★☆ — Good</option><option value="3">★★★☆☆ — Okay</option><option value="2">★★☆☆☆ — Poor</option><option value="1">★☆☆☆☆ — Bad</option></select>
+        </div>
+        <div class="rv-field"><label>Your review *</label><textarea id="rvText" maxlength="600" rows="4" placeholder="What did I build for you, and what changed?"></textarea></div>
+        <input id="rvHp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <button class="btn btn-jade" id="rvSubmit" type="button" style="width:100%;justify-content:center">Submit review</button>
+        <p id="rvMsg" style="margin-top:12px;font-size:14px;text-align:center"></p>
+      </div>
     </div>
   </div>
 </section>
@@ -578,19 +642,19 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
     <div class="faq reveal">
       <details>
         <summary>What kind of businesses do you work with?</summary>
-        <p>Mainly e-commerce sellers (Amazon, eBay, Shopify), retail stores and restaurants — but if your business has a slow, manual process, it can probably be automated. I work remotely with clients in the USA, UK, Europe and Pakistan.</p>
+        <p>Mainly e-commerce sellers (Amazon, eBay, Shopify), retail stores and restaurants — but really, any business owner who needs a digital or AI solution. If your business runs on slow, manual processes, it can be automated: AI automations, business analytics dashboards, custom management apps and web apps. I work remotely with clients in the USA, UK, Europe and Pakistan.</p>
       </details>
       <details>
         <summary>How much does a custom dashboard or app cost?</summary>
-        <p>It depends on scope — a focused analytics dashboard is much lighter than a full management system with user accounts. Tell me what you need on WhatsApp and I'll give you a clear, fixed quote before any work starts. The first conversation is always free.</p>
+        <p>It depends on scope. An AI automation or a business analytics dashboard (like an Amazon sales dashboard or Power BI report) costs less than a full retail store management system or restaurant management app with user roles. Tell me what you need on WhatsApp and you'll get a clear, fixed-price quote before any work starts — the first consultation is always free.</p>
       </details>
       <details>
         <summary>How long does a project take?</summary>
-        <p>A focused dashboard typically takes days, not months. A complete management app with roles and reports takes a few weeks. I build fast, test against your real data, and you see working versions along the way — no long silences.</p>
+        <p>A focused analytics dashboard — an Amazon sales dashboard, e-commerce report or Power BI dashboard — typically takes days, not months. A complete management system for a retail store or restaurant, with user roles and reports, takes a few weeks. I build fast, test against your real business data, and show you working versions along the way.</p>
       </details>
       <details>
         <summary>Do you work remotely with clients in the USA and Europe?</summary>
-        <p>Yes — fully remote. Being based in Karachi means my working day overlaps European business hours completely and US East Coast mornings/afternoons, so communication stays same-day. Everything is delivered online: hosted apps, shared dashboards, and updates over WhatsApp or email.</p>
+        <p>Yes — I provide remote AI automation services and custom app development for businesses in the USA, UK, Europe and Pakistan. Being based in Karachi means my working day overlaps European business hours completely and US East Coast mornings, so communication stays same-day. Everything is delivered online: hosted web apps, shared dashboards and updates over WhatsApp or email.</p>
       </details>
     </div>
   </div>
@@ -711,22 +775,72 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
-// ---- testimonials (rendered from the TESTIMONIALS list; section hidden when empty) ----
+// ---- testimonials: static list + Supabase (approved only) ----
 const tSec=document.getElementById("reviews"), tGrid=document.getElementById("tGrid");
-if(tSec && typeof TESTIMONIALS!=="undefined" && TESTIMONIALS.length){
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  tGrid.innerHTML = TESTIMONIALS.map(t=>`
-    <div class="t-card reveal">
-      <div class="t-stars">${"★".repeat(Math.max(1,Math.min(5,t.stars||5)))}${"☆".repeat(5-Math.max(1,Math.min(5,t.stars||5)))}</div>
-      <div class="t-text">${esc(t.text)}</div>
-      <div class="t-who"><b>${esc(t.name)}</b><small>${esc(t.role||"")}${t.role&&t.business?" · ":""}${esc(t.business||"")}</small></div>
-    </div>`).join("");
-  tSec.style.display="";
-  tGrid.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-  tSec.querySelectorAll(".sec-head, .t-invite").forEach(el=>io.observe(el));
+const SB = SUPABASE_URL && SUPABASE_KEY;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function tCard(t){
+  const n=Math.max(1,Math.min(5,+t.stars||5));
+  return `<div class="t-card reveal in">
+    <div class="t-stars">${"★".repeat(n)}${"☆".repeat(5-n)}</div>
+    <div class="t-text">${esc(t.text)}</div>
+    <div class="t-who"><b>${esc(t.name)}</b><small>${esc(t.role||"")}${t.role&&t.business?" · ":""}${esc(t.business||"")}</small></div>
+  </div>`;
 }
-const rv=document.querySelector("[data-review]");
-if(rv){rv.href="https://wa.me/"+SITE_CONFIG.whatsapp+"?text="+encodeURIComponent("Hi Ali! Here is my review of your work:\n\nStars (1-5): \nMy review: \nMy name & business: ");}
+function renderReviews(list){
+  if(!list.length) return;
+  tGrid.innerHTML = list.map(tCard).join("");
+  tSec.style.display="";
+  tSec.querySelectorAll(".reveal:not(.in)").forEach(el=>io.observe(el));
+}
+if(tSec){
+  let all=[...TESTIMONIALS];
+  renderReviews(all);
+  if(SB){
+    tSec.style.display="";  // form should be reachable even before first review
+    fetch(SUPABASE_URL+"/rest/v1/reviews?approved=eq.true&select=name,business,stars,text&order=created_at.desc",
+      {headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY}})
+      .then(r=>r.ok?r.json():[])
+      .then(rows=>{ if(rows.length){ all=[...rows,...TESTIMONIALS]; renderReviews(all); } })
+      .catch(()=>{});
+  }
+}
+// review form
+const rvT=document.getElementById("rvToggle"), rvF=document.getElementById("rvForm"), rvMsg=document.getElementById("rvMsg");
+if(rvT){
+  rvT.addEventListener("click",()=>{
+    if(!SB){ rvMsg.textContent=""; rvF.style.display = rvF.style.display==="none"?"":"none";
+      if(rvF.style.display!=="none"){rvMsg.style.color="var(--amber)";rvMsg.textContent="Review submissions are being set up — please send your review on WhatsApp for now.";}
+      return;
+    }
+    rvF.style.display = rvF.style.display==="none"?"":"none";
+  });
+  document.getElementById("rvSubmit").addEventListener("click",async()=>{
+    const name=document.getElementById("rvName").value.trim();
+    const biz=document.getElementById("rvBiz").value.trim();
+    const stars=+document.getElementById("rvStars").value;
+    const text=document.getElementById("rvText").value.trim();
+    if(document.getElementById("rvHp").value) return;             // spam honeypot
+    rvMsg.style.color="var(--muted)";
+    if(!name||!text){ rvMsg.style.color="#e07a5f"; rvMsg.textContent="Please fill in your name and review."; return; }
+    if(!SB){ rvMsg.style.color="#e07a5f"; rvMsg.textContent="Submissions aren't live yet — please use WhatsApp."; return; }
+    rvMsg.textContent="Sending…";
+    try{
+      const res=await fetch(SUPABASE_URL+"/rest/v1/reviews",{
+        method:"POST",
+        headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY,"Content-Type":"application/json",Prefer:"return=minimal"},
+        body:JSON.stringify({name,business:biz||null,stars,text})
+      });
+      if(!res.ok) throw new Error(res.status);
+      rvMsg.style.color="var(--jade)";
+      rvMsg.textContent="✅ Thank you! Your review was sent and will appear once approved.";
+      ["rvName","rvBiz","rvText"].forEach(id=>document.getElementById(id).value="");
+    }catch(e){
+      rvMsg.style.color="#e07a5f";
+      rvMsg.textContent="Something went wrong — please try again or send it on WhatsApp.";
+    }
+  });
+}
 
 </script>
 </body>
