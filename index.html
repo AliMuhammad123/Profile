@@ -354,8 +354,9 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 .rv-field textarea{resize:vertical}
 
 /* ---------- compact 3-column projects ---------- */
-.proj-grid{grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:900px){.proj-grid{grid-template-columns:1fr}}
+.proj-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+@media(min-width:1100px){.proj-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.proj-grid{grid-template-columns:1fr}}
 .proj,.proj.p-phone{display:flex;flex-direction:column;gap:14px;padding:20px;grid-template-columns:none}
 .proj > div:last-child{order:-1}
 .proj h3{font-size:19px;margin:8px 0 8px}
@@ -433,7 +434,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Automations", "description": "Automated reports, AI assistants and smart alerts for businesses."}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Analytics Dashboards", "description": "E-commerce and marketplace analytics for Amazon, eBay, Shopify and Odoo."}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Management Apps", "description": "Retail store management and restaurant management systems."}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Apps & Digital Presence", "description": "Business websites and hosted web applications."}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Apps & Digital Presence", "description": "Business websites, local business landing pages and hosted web applications."}}
     ]
   }
 }
@@ -591,6 +592,22 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
           <div class="shot"><div class="tb"><i></i><i></i><i></i><small>restaurant-manager · video</small></div>
           <video id="restaurantVideo" controls muted playsinline preload="metadata" poster="restaurant-poster.jpg" style="display:block;width:100%">
             <source src="restaurant-demo.mp4" type="video/mp4">
+          </video></div>
+          <p class="shot-cap">◆ Actual product — deployed &amp; in use</p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div>
+          <span class="tag">Local business · Web</span>
+          <h3>Car Detailing Business Site</h3>
+          <p>A conversion-focused landing page for a US detailing business — before/after sliders and quotes booked straight from Messenger.</p>
+          <div class="chips"><span class="chip">Before/after slider</span><span class="chip">Messenger quotes</span><span class="chip">Work gallery</span><span class="chip">Mobile-first</span></div>
+        </div>
+        <div>
+          <div class="shot"><div class="tb"><i></i><i></i><i></i><small>drip-detailing · video</small></div>
+          <video id="detailingVideo" controls muted playsinline preload="none" poster="detailing-poster.jpg" style="display:block;width:100%">
+            <source src="detailing-demo.mp4" type="video/mp4">
           </video></div>
           <p class="shot-cap">◆ Actual product — deployed &amp; in use</p>
         </div>
@@ -816,6 +833,20 @@ if(rv){
     rv.replaceWith(img);
     const lbls=document.querySelectorAll(".shot .tb small");
     if(lbls[1]) lbls[1].textContent="restaurant-manager · live";
+  });
+}
+
+// ---- detailing video fallback ----
+const dv=document.getElementById("detailingVideo");
+if(dv){
+  const dsrc=dv.querySelector("source");
+  dsrc.addEventListener("error",()=>{
+    const img=document.createElement("img");
+    img.src=dv.poster; img.alt="Drip Detailing — car detailing landing page"; img.loading="lazy";
+    img.style.cssText="display:block;width:100%";
+    dv.replaceWith(img);
+    const lbls=document.querySelectorAll(".shot .tb small");
+    if(lbls[2]) lbls[2].textContent="drip-detailing · live";
   });
 }
 
