@@ -354,6 +354,7 @@ footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:110px}
 .t-who b{display:block;font-family:var(--font-display);font-size:15.5px}
 .t-who small{color:var(--muted);font-size:13px}
 .t-invite{text-align:center;margin-top:26px}
+.t-invite-head{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);margin:0 0 8px;color:var(--text)}
 .t-invite p{color:var(--muted);font-size:14px;margin-bottom:14px}
 
 .rv-field{margin-bottom:14px}
@@ -677,6 +678,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
     </div>
     <div class="t-grid" id="tGrid"></div>
     <div class="t-invite reveal">
+      <h3 class="t-invite-head">Share your feedback</h3>
       <p>Worked with me? I'd love your honest feedback.</p>
       <button class="btn btn-ghost" id="rvToggle" type="button">⭐ Share your review</button>
       <div id="rvForm" style="display:none;max-width:520px;margin:22px auto 0;text-align:left">
@@ -859,6 +861,18 @@ if(dv){
     if(lbls[2]) lbls[2].textContent="drip-detailing · live";
   });
 }
+
+// ---- keep all project demo videos silent ----
+document.querySelectorAll(".proj video").forEach(v=>{
+  v.muted=true; v.defaultMuted=true; v.volume=0;
+  v.removeAttribute("controlsList");
+  v.setAttribute("controlsList","nodownload noremoteplayback");
+  // if the browser or a user gesture unmutes it, mute it straight back
+  v.addEventListener("volumechange",()=>{
+    if(!v.muted || v.volume>0){ v.muted=true; v.volume=0; }
+  });
+  v.addEventListener("play",()=>{ v.muted=true; v.volume=0; });
+});
 
 // ---- scroll reveal (+ triggers bar fills via .in-view) ----
 const io=new IntersectionObserver(es=>es.forEach(e=>{
