@@ -449,6 +449,75 @@ footer{padding:64px 0 34px;border-top:1px solid var(--line);margin-top:110px}
 .logo-track .lg-word b{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.01em}
 .logo-track .lg::before{content:none}
 
+
+/* signal line above stats */
+.signal-line{position:relative;height:2px;background:linear-gradient(90deg,transparent,var(--line-hover),transparent);
+  margin-bottom:56px;overflow:visible}
+.signal-dot{position:absolute;top:50%;left:0;width:8px;height:8px;margin-top:-4px;border-radius:50%;
+  background:var(--jade);box-shadow:0 0 12px 3px rgba(var(--glow),.6);
+  animation:signalMove 5s ease-in-out infinite}
+@keyframes signalMove{0%{left:0;opacity:0}8%{opacity:1}50%{left:100%}92%{opacity:1}100%{left:100%;opacity:0}}
+
+/* stats grid — 4 across */
+#stats .num-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){#stats .num-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){#stats .num-grid{grid-template-columns:1fr}}
+#stats .num{transition:background .3s}
+#stats .num:hover{background:var(--panel-a)}
+
+/* ---------- connected intelligence diagram ---------- */
+.intel{display:grid;grid-template-columns:230px 220px 1fr;align-items:center;gap:8px}
+@media(max-width:960px){.intel{grid-template-columns:1fr;gap:36px}}
+
+.intel-sources{display:flex;flex-direction:column;gap:14px}
+@media(min-width:961px){.intel-sources{height:320px;justify-content:space-between}}
+.src-pill{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:999px;
+  background:linear-gradient(180deg,var(--panel-a),var(--panel-b));border:1px solid var(--line);
+  opacity:0;transform:translateX(-14px);transition:opacity .55s var(--ease-out-soft),transform .55s var(--ease-out-soft),border-color .25s;
+  transition-delay:var(--d,0s)}
+.intel.in .src-pill{opacity:1;transform:none}
+.src-pill:hover{border-color:var(--jade-dim)}
+.src-pill svg{width:19px;height:19px;flex:none;fill:none;stroke:var(--jade);stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.src-pill span{font-size:14px;font-weight:600;color:var(--text)}
+
+.intel-core{position:relative;display:flex;align-items:center;justify-content:center;height:320px}
+.intel-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.intel-lines path{stroke:var(--line-hover);stroke-width:1.4;opacity:.6;fill:none}
+.flow-dot{display:none}
+@supports (offset-path: path("M0 0")){
+  .flow-dot{
+    display:block;position:absolute;top:0;left:0;width:7px;height:7px;margin:-3.5px;
+    border-radius:50%;background:var(--jade);
+    box-shadow:0 0 7px 1px rgba(var(--glow),.85);
+    offset-rotate:0deg;opacity:0;
+    animation:flowAlong 2.6s linear infinite;
+  }
+}
+@keyframes flowAlong{0%{offset-distance:0%;opacity:0}6%{opacity:1}90%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@media(max-width:960px){.intel-lines,.flow-dot{display:none}}
+
+.core-circle{position:relative;width:150px;height:150px;border-radius:50%;
+  background:linear-gradient(180deg,var(--panel-a),var(--panel-b));border:1px solid var(--line-hover);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  box-shadow:0 0 0 10px rgba(var(--glow),.05),0 20px 46px var(--shadow-lift)}
+.core-ring{position:absolute;inset:-14px;border-radius:50%;border:1.5px dashed var(--jade-dim);
+  animation:coreSpin 22s linear infinite}
+.core-badge{font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--jade)}
+.core-circle small{font-family:var(--font-mono);font-size:8.5px;letter-spacing:.16em;color:var(--muted)}
+@keyframes coreSpin{to{transform:rotate(360deg)}}
+
+.intel-pipeline{display:flex;align-items:stretch;gap:14px}
+@media(max-width:960px){.intel-pipeline{flex-direction:column}}
+.flow-step{flex:1;background:linear-gradient(180deg,var(--panel-a),var(--panel-b));border:1px solid var(--line);
+  border-radius:16px;padding:22px 20px;transition:border-color .25s,transform .3s var(--ease-out-soft)}
+.flow-step:hover{border-color:var(--jade-dim);transform:translateY(-3px)}
+.flow-step b{display:block;font-family:var(--font-display);font-size:16px;margin-bottom:6px}
+.flow-step p{font-size:13px;color:var(--muted);line-height:1.55}
+.flow-arrow{width:20px;height:20px;flex:none;align-self:center;fill:none;stroke:var(--jade-dim);
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:960px){.flow-arrow{transform:rotate(90deg);align-self:flex-start;margin-left:26px}}
+
 /* ---- signature: cursor-lit card edge ---- */
 .lit{position:relative;isolation:isolate}
 .lit::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
@@ -688,6 +757,10 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
   .ba-arrow svg{opacity:1;transform:none;transition:none}
   .grain{opacity:.18}
   .aurora{animation:none;transform:scale(1.06)}
+  .signal-dot{animation:none;left:50%;opacity:1}
+  .flow-dot{display:none}
+  .core-ring{animation:none}
+  .src-pill{opacity:1;transform:none;transition:none}
   .bar::after{transition:none;transform:scaleX(1)}
   html{scroll-behavior:auto}
 }
@@ -865,6 +938,83 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
 
 
 
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap">
+    <div class="signal-line" aria-hidden="true"><span class="signal-dot"></span></div>
+    <div class="num-grid stagger reveal">
+      <div class="num"><strong data-count="4" data-suffix="+">0+</strong><span>Live Projects Shipped</span></div>
+      <div class="num"><strong data-count="12" data-suffix="+">0+</strong><span>Tools &amp; Platforms Used</span></div>
+      <div class="num"><strong data-count="100" data-suffix="%">0%</strong><span>Fixed-Price, No Surprises</span></div>
+      <div class="num"><strong data-count="24" data-prefix="&lt;" data-suffix="h">0h</strong><span>Reply Time on WhatsApp</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">How the automation thinks</p>
+      <h2>Your scattered data, <em>connected</em>.</h2>
+      <p>Every automation follows the same loop &mdash; whatever the platform.</p>
+    </div>
+
+    <div class="intel reveal">
+      <div class="intel-sources">
+        <div class="src-pill" style="--d:0s"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><span>Sales Data</span></div>
+        <div class="src-pill" style="--d:.08s"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg><span>Inventory</span></div>
+        <div class="src-pill" style="--d:.16s"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21 7H6"/></svg><span>Orders</span></div>
+        <div class="src-pill" style="--d:.24s"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.35 0-2.6-.32-3.7-.9L4 21l1.9-4.8A8.5 8.5 0 1 1 21 11.5z"/></svg><span>Messages</span></div>
+      </div>
+
+      <div class="intel-core">
+        <svg class="intel-lines" viewBox="0 0 220 320" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,32 C90,32 90,150 214,158" fill="none"/>
+          <path d="M0,118 C90,118 90,152 214,159" fill="none"/>
+          <path d="M0,204 C90,204 90,168 214,161" fill="none"/>
+          <path d="M0,290 C90,290 90,190 214,162" fill="none"/>
+        </svg>
+        <span class="flow-dot" style="offset-path:path('M0,32 C90,32 90,150 214,158');animation-delay:0s"></span>
+        <span class="flow-dot" style="offset-path:path('M0,118 C90,118 90,152 214,159');animation-delay:.6s"></span>
+        <span class="flow-dot" style="offset-path:path('M0,204 C90,204 90,168 214,161');animation-delay:1.2s"></span>
+        <span class="flow-dot" style="offset-path:path('M0,290 C90,290 90,190 214,162');animation-delay:1.8s"></span>
+        <div class="core-circle">
+          <div class="core-ring"></div>
+          <div class="core-badge">AM</div>
+          <small>AUTOMATION CORE</small>
+        </div>
+      </div>
+
+      <div class="intel-pipeline">
+        <div class="flow-step">
+          <div class="ic" style="margin-bottom:12px"><svg viewBox="0 0 24 24"><path d="M12 3v12M12 15l-4-4M12 15l4-4M4 19h16"/></svg></div>
+          <b>Collect</b>
+          <p>Pulls from your sheets, marketplace exports and forms.</p>
+        </div>
+        <svg class="flow-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        <div class="flow-step">
+          <div class="ic" style="margin-bottom:12px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg></div>
+          <b>Analyze</b>
+          <p>Finds the numbers that actually explain your sales and stock.</p>
+        </div>
+        <svg class="flow-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        <div class="flow-step">
+          <div class="ic" style="margin-bottom:12px"><svg viewBox="0 0 24 24"><path d="M4 4v5h5M20 20v-5h-5M4.5 9a8 8 0 0 1 14-4.5M19.5 15a8 8 0 0 1-14 4.5"/></svg></div>
+          <b>Automate</b>
+          <p>Runs the repetitive reporting and alerts on autopilot.</p>
+        </div>
+        <svg class="flow-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        <div class="flow-step">
+          <div class="ic" style="margin-bottom:12px"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div>
+          <b>Deliver</b>
+          <p>Puts it in one dashboard or app you check daily.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROJECTS -->
 <section id="projects">
