@@ -518,6 +518,21 @@ footer{padding:64px 0 34px;border-top:1px solid var(--line);margin-top:110px}
   stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:960px){.flow-arrow{transform:rotate(90deg);align-self:flex-start;margin-left:26px}}
 
+
+/* back to top */
+.back-to-top{position:fixed;right:22px;bottom:22px;z-index:70;width:48px;height:48px;
+  border-radius:50%;background:var(--panel);border:1px solid var(--line);color:var(--jade);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+  box-shadow:0 10px 28px var(--shadow-lift);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s var(--ease-out-soft),transform .3s var(--ease-out-soft),
+             visibility .3s,border-color .2s,background .2s}
+.back-to-top.show{opacity:1;visibility:visible;transform:none}
+.back-to-top:hover{border-color:var(--jade-dim);background:var(--panel-a)}
+.back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){.back-to-top{right:16px;bottom:16px;width:44px;height:44px}}
+
 /* ---- signature: cursor-lit card edge ---- */
 .lit{position:relative;isolation:isolate}
 .lit::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
@@ -761,6 +776,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
   .flow-dot{display:none}
   .core-ring{animation:none}
   .src-pill{opacity:1;transform:none;transition:none}
+  .back-to-top{transition:opacity .15s,visibility .15s}
   .bar::after{transition:none;transform:scaleX(1)}
   html{scroll-behavior:auto}
 }
@@ -1337,6 +1353,10 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
 // ---- apply config ----
 document.documentElement.classList.add("js");
@@ -1523,18 +1543,26 @@ if(heroEl && !reduce && matchMedia("(hover: hover) and (pointer: fine)").matches
 
 // ---- nav shrink on scroll ----
 const hdr=document.querySelector("header");
-if(hdr){
+const bttBtn=document.getElementById("backToTop");
+if(hdr || bttBtn){
   let nticking=false;
   const onScroll=()=>{
     if(nticking) return;
     nticking=true;
     requestAnimationFrame(()=>{
-      hdr.classList.toggle("shrunk", window.scrollY > 90);
+      const y=window.scrollY;
+      if(hdr) hdr.classList.toggle("shrunk", y > 90);
+      if(bttBtn) bttBtn.classList.toggle("show", y > 560);
       nticking=false;
     });
   };
   window.addEventListener("scroll",onScroll,{passive:true});
   onScroll();
+}
+if(bttBtn){
+  bttBtn.addEventListener("click",()=>{
+    window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"});
+  });
 }
 
 // ---- testimonials: static list + Supabase (approved only) ----
