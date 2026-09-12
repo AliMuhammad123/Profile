@@ -23,6 +23,7 @@ const SITE_CONFIG = {
   whatsapp: "923168916383",
   whatsappMessage: "Hi Ali! I saw your website and I'd like to talk about a project.",
   linkedin: "https://www.linkedin.com/in/ali-muhammad-5b89161b2/",
+  teams: "https://teams.live.com/v2/",
   email: "alykhakwani7@gmail.com"
 };
 
@@ -1181,6 +1182,10 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V23H.24V8.25zM8.34 8.25h4.33v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.1c0-1.7-.03-3.88-2.37-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.25z"/></svg>
             LinkedIn
           </a>
+          <a class="btn btn-ghost" data-teams href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 10.5V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3.5l4 4v-11z"/></svg>
+            Microsoft Teams
+          </a>
           <a class="btn btn-ghost" data-email href="#" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             Email me
@@ -1213,6 +1218,9 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
           <a data-li href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V23H.24V8.25zM8.34 8.25h4.33v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.1c0-1.7-.03-3.88-2.37-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.25z"/></svg>
           </a>
+          <a data-teams href="#" target="_blank" rel="noopener" aria-label="Microsoft Teams">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 10.5V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3.5l4 4v-11z"/></svg>
+          </a>
           <a href="mailto:alykhakwani7@gmail.com" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           </a>
@@ -1240,6 +1248,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
         <a data-wa href="#">Message on WhatsApp</a>
         <a href="mailto:alykhakwani7@gmail.com">alykhakwani7@gmail.com</a>
         <a data-li href="#" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a data-teams href="#" target="_blank" rel="noopener">Meet on Microsoft Teams</a>
         <p class="foot-loc">Karachi, Pakistan &middot; Remote worldwide</p>
       </div>
     </div>
@@ -1266,6 +1275,7 @@ document.querySelectorAll("[data-year]").forEach(el=>el.textContent=new Date().g
 const waURL = "https://wa.me/" + SITE_CONFIG.whatsapp + "?text=" + encodeURIComponent(SITE_CONFIG.whatsappMessage);
 document.querySelectorAll("[data-wa]").forEach(a=>a.href=waURL);
 document.querySelectorAll("[data-li]").forEach(a=>a.href=SITE_CONFIG.linkedin);
+document.querySelectorAll("[data-teams]").forEach(a=>a.href=SITE_CONFIG.teams);
 const em=document.querySelector("[data-email]");
 if(em && SITE_CONFIG.email){
   em.href="mailto:"+SITE_CONFIG.email;
