@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ali Muhammad Altaf | AI Automation, E-commerce Analytics & Custom Business Apps — USA, Europe & Pakistan</title>
+<title>Ali Muhammad Altaf | AI Automation, E-commerce Analytics & Custom Business Apps </title>
 <meta name="description" content="AI automation services, Amazon & e-commerce analytics dashboards, retail store and restaurant management apps. Remote-first developer serving businesses in the USA, UK, Europe and Pakistan. Amazon, eBay, Shopify & Odoo.">
 <meta name="keywords" content="AI automation services, Amazon seller analytics dashboard, e-commerce analytics, retail store management app, restaurant management software, real estate agency software, multi-tenant real estate CRM, interactive web app development, Odoo developer, Power BI dashboards, custom business apps, remote developer, USA, UK, Europe, Pakistan">
 <link rel="canonical" href="https://alikhakwani.com/">
@@ -79,6 +79,7 @@ const TESTIMONIALS = [
   --muted:#8ba49b;
   --jade:#3ddc97;
   --jade-dim:#1d5c43;
+  --jade-light:#7af0be;
   --amber:#e7a13b;
   --radius:18px;
   --font-display:"Bricolage Grotesque",sans-serif;
@@ -217,10 +218,11 @@ header.shrunk .logo{width:30px;height:30px}
 @media(max-width:760px){.hero-grid{gap:32px}}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 .hero h1{font-size:clamp(42px,6vw,74px);font-weight:750}
-.hero h1 .dim{color:var(--muted)}
-.hero h1 .glow{background:linear-gradient(100deg,#3ddc97 0%,#7af0be 45%,#3ddc97 100%);
+.hero h1 .dim,h2 .dim{color:var(--muted)}
+.hero h1 .glow,h2 .glow{background:linear-gradient(100deg,var(--jade) 0%,var(--jade-light) 45%,var(--jade) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 0 34px rgba(61,220,151,.32))}
+h2 .glow{filter:drop-shadow(0 0 20px rgba(61,220,151,.22))}
 .hero p.lead{margin:26px 0 36px;font-size:18px;color:var(--muted);max-width:50ch}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
 .rise{opacity:0;transform:translateY(22px);animation:riseIn .85s cubic-bezier(.2,.7,.3,1) forwards}
@@ -293,6 +295,7 @@ html[data-theme="light"]{
   --muted:#556962;
   --jade:#0a7d52;
   --jade-dim:#8fd3b5;
+  --jade-light:#0fa86e;
   --amber:#b8770f;
   --panel-a:#ffffff;
   --panel-b:#f3f7f4;
@@ -320,9 +323,9 @@ html[data-theme="light"]{
 /* light: flat solid background, no gradient wash */
 html[data-theme="light"] body::before{background:var(--bg)}
 html[data-theme="light"] .aurora{display:none}
-html[data-theme="light"] .hero h1 .dim{color:#7b8f88}
-html[data-theme="light"] .hero h1 .glow{
-  background:linear-gradient(100deg,#0a7d52 0%,#0fa86e 45%,#0a7d52 100%);
+html[data-theme="light"] .hero h1 .dim,html[data-theme="light"] h2 .dim{color:#7b8f88}
+html[data-theme="light"] .hero h1 .glow,html[data-theme="light"] h2 .glow{
+  background:linear-gradient(100deg,var(--jade) 0%,var(--jade-light) 45%,var(--jade) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 0 22px rgba(10,125,82,.16))}
 html[data-theme="light"] .strip{
@@ -331,7 +334,7 @@ html[data-theme="light"] .ic{background:#e3f3ea}
 html[data-theme="light"] .hero-photo .plate b{color:#e9efec}
 html[data-theme="light"] .hero-photo .frame::after{
   background:linear-gradient(180deg,transparent 55%,rgba(12,22,24,.72))}
-html[data-theme="light"] .final-inner{background:var(--panel)}
+html[data-theme="light"] .final-inner{background:var(--panel);border-color:var(--line)}
 html[data-theme="light"] .portrait::after{
   background:linear-gradient(180deg,transparent 60%,rgba(12,22,24,.45))}
 html[data-theme="light"] .mess i{background:#dfe8e3}
@@ -497,11 +500,13 @@ footer{padding:64px 0 34px;border-top:1px solid var(--line);margin-top:110px}
 .proj p{color:var(--muted);font-size:15px;margin-bottom:18px}
 
 /* ---------- numbers ---------- */
-.numbers{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.numbers{background:radial-gradient(900px 300px at 15% 0%,rgba(61,220,151,.10),transparent 60%),radial-gradient(700px 260px at 90% 100%,rgba(231,161,59,.07),transparent 65%),var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+html[data-theme="light"] .numbers{background:var(--panel)}
 .num-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 @media(max-width:760px){.num-grid{grid-template-columns:1fr}}
 .num{background:var(--panel2);padding:38px 30px;text-align:center}
 .num strong{font-family:var(--font-display);font-size:clamp(38px,5vw,56px);font-weight:750;color:var(--jade);display:block;line-height:1}
+.num:nth-child(even) strong{color:var(--jade-light)}
 .num span{display:block;margin-top:10px;color:var(--muted);font-size:14.5px}
 
 /* ---------- thesis ---------- */
@@ -521,8 +526,8 @@ footer{padding:64px 0 34px;border-top:1px solid var(--line);margin-top:110px}
 
 /* ---------- final CTA ---------- */
 .final{padding:0}
-.final-inner{position:relative;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:
-  radial-gradient(600px 340px at 20% 0%, rgba(61,220,151,.12), transparent 60%),var(--panel);
+.final-inner{position:relative;border:1px solid rgba(231,161,59,.28);border-radius:28px;overflow:hidden;background:
+  radial-gradient(600px 340px at 20% 0%, rgba(231,161,59,.16), transparent 60%),radial-gradient(500px 300px at 95% 100%, rgba(61,220,151,.10), transparent 60%),var(--panel);
   display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:30px;margin:0 24px}
 @media(max-width:860px){.final-inner{grid-template-columns:1fr}}
 .final-copy{padding:70px 20px 70px 60px}
@@ -872,7 +877,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">The work</p>
-      <h2>Projects I&rsquo;ve actually shipped.</h2>
+      <h2><span class="dim">Projects I&rsquo;ve actually</span> <span class="glow">shipped.</span></h2>
       <p>Real working apps I built — see them in action.</p>
     </div>
     <div class="proj-grid stagger reveal">
@@ -1122,7 +1127,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Ways to work with me</p>
-      <h2>What I can build for you.</h2>
+      <h2><span class="dim">What I can build</span> <span class="glow">for you.</span></h2>
       <p>If it's slow, manual or messy — it can be automated.</p>
     </div>
     <div class="svc-grid stagger reveal">
@@ -1224,7 +1229,7 @@ html:not(.js) .stagger > *{opacity:1;transform:none}
     <div class="final-inner reveal">
       <div class="final-copy">
         <p class="eyebrow">Let's talk</p>
-        <h2>Got a process that's slowing you down? Let's automate it.</h2>
+        <h2><span class="dim">Got a process that's slowing you down?</span> <span class="glow">Let's automate it.</span></h2>
         <p>Tell me about your business on WhatsApp — I'll reply personally, and the first conversation is always free.</p>
         <div class="cta-row">
           <a class="btn btn-jade" data-wa href="#">
