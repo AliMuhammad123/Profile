@@ -857,3 +857,24 @@ html[data-theme="light"] .sec-head h1 .dim,html[data-theme="light"] .final h1 .d
 @media(max-width:900px){.explore-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.cta-inner{flex-direction:column;align-items:flex-start;padding:28px 22px}}
 @media(max-width:520px){.explore-grid{grid-template-columns:1fr}}
+
+/* ===== offers ===== */
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.offer{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,var(--panel),var(--panel2));overflow:hidden;transition:border-color .2s,transform .2s}
+.offer::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--jade),var(--jade-2))}
+.offer:hover{border-color:var(--jade);transform:translateY(-3px)}
+.offer-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.offer-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(var(--glow),.12);border:1px solid rgba(var(--glow),.3)}
+.offer-ic svg{width:22px;height:22px;fill:none;stroke:var(--jade);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.offer-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--jade)}
+.offer h3{font-size:20px;line-height:1.2}
+.offer p{color:var(--muted);font-size:14.5px;line-height:1.55}
+.offer ul{list-style:none;display:grid;gap:8px;margin:2px 0 6px;padding:0;flex:1;align-content:start}
+.offer li{position:relative;padding-left:22px;font-size:14px;line-height:1.4}
+.offer li::before{content:"";position:absolute;left:0;top:3px;width:13px;height:13px;border-radius:50%;background:rgba(var(--glow),.18);border:1px solid var(--jade)}
+.offer li::after{content:"";position:absolute;left:4px;top:6px;width:5px;height:3px;border-left:1.6px solid var(--jade);border-bottom:1.6px solid var(--jade);transform:rotate(-45deg)}
+.offer-cta{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--jade);text-decoration:none;padding-top:6px;border-top:1px solid var(--line)}
+.offer-cta:hover{text-decoration:underline}
+.offer-note{text-align:center;color:var(--muted);font-size:14px;margin-top:22px}
+@media(max-width:1100px){.offer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.offer-grid{grid-template-columns:1fr}}
