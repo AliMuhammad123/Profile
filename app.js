@@ -7,6 +7,8 @@ document.querySelectorAll("[data-year]").forEach(el=>el.textContent=new Date().g
 
 const waURL = "https://wa.me/" + SITE_CONFIG.whatsapp + "?text=" + encodeURIComponent(SITE_CONFIG.whatsappMessage);
 document.querySelectorAll("[data-wa]").forEach(a=>a.href=waURL);
+const waAzURL = "https://wa.me/" + SITE_CONFIG.whatsapp + "?text=" + encodeURIComponent(SITE_CONFIG.whatsappMessageAmazon || SITE_CONFIG.whatsappMessage);
+document.querySelectorAll("[data-wa-az]").forEach(a=>a.href=waAzURL);
 document.querySelectorAll("[data-li]").forEach(a=>a.href=SITE_CONFIG.linkedin);
 document.querySelectorAll("[data-teams]").forEach(a=>a.href=SITE_CONFIG.teams);
 const em=document.querySelector("[data-email]");
