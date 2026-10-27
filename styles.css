@@ -1036,3 +1036,11 @@ a.az-card:hover{transform:translateX(4px);border-color:var(--jade)}
 @media(max-width:1000px){.az-grid{grid-template-columns:repeat(2,1fr)}.az-res{grid-template-columns:repeat(3,1fr)}.az-why-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:860px){.az-hero-grid,.az-about,.az-skills-grid,.az-show,.az-show.rev,.az-contact{grid-template-columns:1fr}.az-photo{margin:0 auto}.az-show.rev .az-shot{order:0}.az-contact{gap:34px}}
 @media(max-width:560px){.az-grid,.az-why-grid,.az-checks.two{grid-template-columns:1fr}.az-res{grid-template-columns:repeat(2,1fr)}.az-stats{grid-template-columns:1fr}.az-traits{grid-template-columns:1fr}.az-hero{padding-top:36px}}
+
+/* ===== back bar on Amazon pages ===== */
+.track-bar{background:var(--panel2);border-bottom:1px solid var(--line);font-size:13.5px}
+.track-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:9px;padding-bottom:9px}
+.track-bar a{color:var(--text);font-weight:700;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.track-bar a:hover{color:var(--jade)}
+.track-bar .tb-note{color:var(--muted);font-size:12.5px}
+@media(max-width:560px){.track-bar .tb-note{display:none}}
