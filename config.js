@@ -4,6 +4,8 @@ const SITE_CONFIG = {
   initials: "AM",
   whatsapp: "923168916383",
   whatsappMessage: "Hi Ali! I saw your website and I'd like to talk about a project.",
+  whatsappMessageAmazon: "Hi Ali! I saw your Amazon FBA portfolio and I'd like to talk about managing my Amazon account.",
+  emailAmazon: "alimuhammadva101@gmail.com",
   linkedin: "https://www.linkedin.com/in/ali-muhammad-5b89161b2/",
   teams: "https://teams.live.com/v2/",
   email: "alykhakwani7@gmail.com"
